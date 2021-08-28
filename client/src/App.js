@@ -11,12 +11,10 @@ const addFriend = () => {
   Axios.post('http://localhost:3001/addfriend',{
     name: name, 
     age: age,
-   }).then(()=>{
-    alert("it worked");
+  }).then(()=>{
+    setListOfFriends([...listOFFriends, {name: name, age: age}])
   })
-  .catch(()=> {
-    alert("it didnt work");
-  });
+
 };
 useEffect(() => {
   Axios.get('http://localhost:3001/read')
@@ -44,15 +42,20 @@ useEffect(() => {
 
       <button onClick={addFriend}>Add Friend</button>
       </div>
-
+      <div className="listOfFriends">
       {listOFFriends.map((val) => {
         return (
-        <div>
-          {" "}
-          {val.name} {val.age}
+          <div className="friendContainer">
+            <div className="friend">
+            <h3>Name: {val.name}</h3>
+            <h3> Age: {val.age}</h3>
            </div>
+           <button>Update</button>
+           <button id="removeBtn">X</button>
+          </div>
       );
         })}
+      </div>
     </div>
   );
 }

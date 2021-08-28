@@ -36,3 +36,42 @@ body {
 .inputs button:hover{
   cursor: pointer;
 }
+.listOfFriends {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.friendContainer{
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.friend {
+  width: 400px;
+  height: 60px;
+  background-color: #68c7f3;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  margin: 10px;
+}
+.friend h3{
+  margin-left: 15px;
+}
+.friendContainer button {
+  width: 80px;
+  height: 50px;
+  border: 2px solid rgb(0, 177, 247);
+  background-color: #68c7f3;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#removeBtn {
+  border-left: none
+
+}

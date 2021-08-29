@@ -14,8 +14,13 @@ const addFriend = () => {
   }).then(()=>{
     setListOfFriends([...listOFFriends, {name: name, age: age}])
   })
-
 };
+
+const updateFriend = (id) => {
+  const newAge = prompt('Enter New Age');
+  Axios.put('http://localhost:3001/update',{newAge: newAge, id: id});
+}
+
 useEffect(() => {
   Axios.get('http://localhost:3001/read')
   .then((response) => {
@@ -50,7 +55,7 @@ useEffect(() => {
             <h3>Name: {val.name}</h3>
             <h3> Age: {val.age}</h3>
            </div>
-           <button>Update</button>
+           <button onClick={() => {updateFriend(val._id)}}>Update</button>
            <button id="removeBtn">X</button>
           </div>
       );

@@ -75,3 +75,6 @@ body {
   border-left: none
 
 }
+.friendContainer button:hover{
+  cursor: pointer;
+}

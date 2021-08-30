@@ -3,6 +3,8 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const FriendModel = require('./models/Friends')
+require('dotenv').config();
+
 
 app.use(express.json())
 app.use(cors());
@@ -53,6 +55,6 @@ app.delete('/delete/:id', async(req,res)=>{
     res.send('itemdeleted')
 })
 
-app.listen(3001, () => {
+app.listen(process.env.PORT || 3001, () => {
     console.log('you are connected!');
 });

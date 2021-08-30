@@ -11,15 +11,27 @@ const addFriend = () => {
   Axios.post('http://localhost:3001/addfriend',{
     name: name, 
     age: age,
-  }).then(()=>{
-    setListOfFriends([...listOFFriends, {name: name, age: age}])
+  }).then((response)=>{
+    setListOfFriends([...listOFFriends, {_id: response.data._id, name: name, age: age}])
   })
 };
 
 const updateFriend = (id) => {
   const newAge = prompt('Enter New Age');
-  Axios.put('http://localhost:3001/update',{newAge: newAge, id: id});
+  Axios.put('http://localhost:3001/update',{newAge: newAge, id: id}).then (()=> {
+      setListOfFriends(listOFFriends.map((val)=>{
+        return val._id == id ? {_id: id,name: val.name,age: newAge } : val 
+      }))
+  })
 }
+
+const deleteFriend = (id) =>{
+  Axios.delete(`http://localhost:3001/delete/${id}`).then(()=>{
+    setListOfFriends(listOFFriends.filter((val)=>{
+      return val._id != id;
+    }))
+  })
+};
 
 useEffect(() => {
   Axios.get('http://localhost:3001/read')
@@ -56,7 +68,7 @@ useEffect(() => {
             <h3> Age: {val.age}</h3>
            </div>
            <button onClick={() => {updateFriend(val._id)}}>Update</button>
-           <button id="removeBtn">X</button>
+           <button id="removeBtn" onClick={() => {deleteFriend(val._id)}} >X</button>
           </div>
       );
         })}

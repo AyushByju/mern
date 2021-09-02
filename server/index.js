@@ -9,7 +9,7 @@ require('dotenv').config();
 app.use(express.json())
 app.use(cors());
 
-mongoose.connect("mongodb://localhost:27017/Mern?readPreference=primary&appname=MongoDB%20Compass&ssl=false", 
+mongoose.connect("mongodb+srv://Ayush:Ayush@cluster0.0vwze.mongodb.net/Mern?retryWrites=true&w=majority", 
 {useNewUrlParser: true}
 );
 

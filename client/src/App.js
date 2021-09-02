@@ -38,6 +38,7 @@ useEffect(() => {
   .then((response) => {
     setListOfFriends(response.data)
   })
+  
   .catch(()=> {
     console.log("ERROR");
   });
